@@ -14,3 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/saludar', function () {
+    return view('saludar');
+});
+
+Route::get('/despedir', function () {
+    return view('despedir');
+});
+
+Route::get('/dormir', function () {
+    return view('dormir');
+});
+
+Route::get('/tomar', function () {
+    return view('tomar');
+});
+
