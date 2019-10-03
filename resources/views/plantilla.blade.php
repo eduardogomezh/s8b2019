@@ -10,12 +10,6 @@
 </head>
 <body>
         @yield("contenido")
-<button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>    
-<p>First Paragraph</p>
-<p>Second Paragraph</p>
-<p>Yet one more Paragraph</p>
 <script>
 $( "p" ).click(function() {
   $( this ).slideUp();
