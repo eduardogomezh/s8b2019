@@ -35,4 +35,4 @@ Route::get('/iniciar', 'ControladorInicio@iniciar');
 Route::get('/checar', 'ControladorInicio@checar');
 
 Route::get('/dashboard', 'ControladorGerente@dashboard');
-Route::get('/listar' , 'ControladorCliente@listar');
+Route::get('/listar/{cuantos?}' , 'ControladorCliente@listar');

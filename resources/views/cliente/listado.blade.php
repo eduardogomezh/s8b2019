@@ -1,4 +1,4 @@
 @extends('plantilla')
 @section('contenido')
-    estas en el listado de productos
+    mostrar de {{$cuantos}} en {{$cuantos}} clientes 
 @endsection
