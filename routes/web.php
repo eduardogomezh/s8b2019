@@ -36,3 +36,5 @@ Route::get('/checar', 'ControladorInicio@checar');
 
 Route::get('/dashboard', 'ControladorGerente@dashboard');
 Route::get('/listar/{cuantos?}' , 'ControladorCliente@listar');
+
+//Route::resource("Producto","ControladorEjemplo");
