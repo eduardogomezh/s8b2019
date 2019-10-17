@@ -28,6 +28,7 @@ class CarroController extends Controller
     public function create()
     {
         //
+        return view ("carro.nuevo");
     }
 
     /**
@@ -38,7 +39,10 @@ class CarroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $registro = new Carro();
+        $registro->fill($request->all());
+        $registro->save();
+        return redirect("/Carro")->with('ok','Se dio de alta un carro');
     }
 
     /**
@@ -49,7 +53,8 @@ class CarroController extends Controller
      */
     public function show($id)
     {
-        //
+        $registro = Carro::find($id);
+        return view('carro.mostrar',compact('registro'));
     }
 
     /**
