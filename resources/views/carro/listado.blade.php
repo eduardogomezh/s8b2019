@@ -14,7 +14,15 @@
     @foreach ($todos as $carro)
         <tr>
             <td>{{$carro->Marca}} - {{$carro->Modelo}}</td>
-            <td><a href="/Carro/{{$carro->id}}">READ</a> UPDATE DELETE</td>
+            <td><a href="/Carro/{{$carro->id}}">READ</a> 
+                <a href="/Carro/{{$carro->id}}/edit">UPDATE</a>
+                <form action="/Carro/{{$carro->id}}" method="post" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" value="DELETE">
+                </form>
+                 
+            </td>
         </tr>
 @endforeach
 </tbody>

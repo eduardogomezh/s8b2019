@@ -65,7 +65,8 @@ class CarroController extends Controller
      */
     public function edit($id)
     {
-        //
+        $registro = Carro::find($id);
+        return view('carro.editar',compact('registro'));
     }
 
     /**
@@ -77,7 +78,10 @@ class CarroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $registro = Carro::find($id);
+        $registro->fill($request->all());
+        $registro->save();
+        return redirect("/Carro")->with('ok','Se actualizo el carro');
     }
 
     /**
@@ -88,6 +92,9 @@ class CarroController extends Controller
      */
     public function destroy($id)
     {
+        $registro = Carro::find($id);
+        $registro->delete();
+        return redirect("/Carro")->with('ok','Se borro el carro');
         //
     }
 }
