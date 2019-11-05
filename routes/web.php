@@ -36,5 +36,9 @@ Route::get('/checar', 'ControladorInicio@checar');
 
 Route::get('/dashboard', 'ControladorGerente@dashboard');
 Route::get('/listar/{cuantos?}' , 'ControladorCliente@listar');
-Route::resource("Carro",'CarroController');
+Route::resource("Carro",'CarroController')->middleware('auth');
+Route::resource("Propietario",'PropietarioController')->middleware('auth');
 //Route::resource("Producto","ControladorEjemplo");
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

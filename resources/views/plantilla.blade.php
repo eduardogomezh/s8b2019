@@ -9,7 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-        @yield("contenido")
+  <center>
+    <a href="/Carro">LISTADO DE CARROS</a>
+    -
+    <a href="/Propietario">LISTADO DE PROPIETARIOS</a>
+  </center>
+    @yield("contenido")
 <script>
 $( "p" ).click(function() {
   $( this ).slideUp();

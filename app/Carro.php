@@ -11,4 +11,10 @@ class Carro extends Model
     
     public $fillable = ["Marca",'Modelo'];
 
+
+    public function propietario(){
+        return $this->hasOne("App\Propietario")
+        ->withDefault(["nombre"=>"Sin propietario"]);
+    }
+
 }

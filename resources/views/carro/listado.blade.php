@@ -1,11 +1,12 @@
-@extends('plantilla')
-@section('contenido')
+@extends('layouts.app')
+@section('content')
      {{\Session::get('ok')}}
     Carros:
 <table border="1">
     <thead>
         <tr>
             <td>CARRO</td>
+            <td>PROPIETARIO</td>
             <td>ACCIONES</td>
         </tr>
     </thead>
@@ -14,6 +15,8 @@
     @foreach ($todos as $carro)
         <tr>
             <td>{{$carro->Marca}} - {{$carro->Modelo}}</td>
+            <td>{{$carro->propietario->nombre}}</td>
+
             <td><a href="/Carro/{{$carro->id}}">READ</a> 
                 <a href="/Carro/{{$carro->id}}/edit">UPDATE</a>
                 <form action="/Carro/{{$carro->id}}" method="post" style="display: inline;">
