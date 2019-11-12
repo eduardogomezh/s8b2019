@@ -15,15 +15,20 @@
     @foreach ($todos as $carro)
         <tr>
             <td>{{$carro->Marca}} - {{$carro->Modelo}}</td>
-            <td>{{$carro->propietario->nombre}}</td>
+            <td>{{ $carro->propietario->nombre }}</td>
 
-            <td><a href="/Carro/{{$carro->id}}">READ</a> 
-                <a href="/Carro/{{$carro->id}}/edit">UPDATE</a>
-                <form action="/Carro/{{$carro->id}}" method="post" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="DELETE">
-                </form>
+            <td>
+                @can('acciones', App\Carro::class)
+                    <a href="/Carro/{{$carro->id}}">READ</a> 
+                    <a href="/Carro/{{$carro->id}}/edit">UPDATE</a>
+                    <form action="/Carro/{{$carro->id}}" method="post" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="DELETE">
+                    </form>
+                        
+                @endcan
+                
                  
             </td>
         </tr>

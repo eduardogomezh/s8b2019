@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Carro;
+use Illuminate\Support\Facades\Auth;
 
 class CarroController extends Controller
 {
@@ -14,8 +16,12 @@ class CarroController extends Controller
      */
     public function index()
     {
+        $this->authorize("listar", Carro::class);
+//        $todos = Carro::all();
+        $todos = Carro::where('Modelo',">",2000)->get();
+        //$todos = DB::table('carros')->get();
+//        $todos = DB::table('carros')->where('Modelo',">",2000)->get();
 
-        $todos = Carro::all();
         return view('carro.listado', compact('todos'));
         //
     }
@@ -27,7 +33,11 @@ class CarroController extends Controller
      */
     public function create()
     {
-        //
+/*
+        if (Auth::user()->origen == "Web") return "";
+        if (Auth::user()->origen == "Sistema") return "";
+        if (Auth::user()->origen == "Gerente") return "";
+*/
         return view ("carro.nuevo");
     }
 
