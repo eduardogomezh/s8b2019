@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Carro;
+use App\Propietario;
+use Exception;
 use Illuminate\Support\Facades\Auth;
+use Tests\Feature\ExampleTest;
 
 class CarroController extends Controller
 {
@@ -49,10 +52,22 @@ class CarroController extends Controller
      */
     public function store(Request $request)
     {
-        $registro = new Carro();
-        $registro->fill($request->all());
-        $registro->save();
-        return redirect("/Carro")->with('ok','Se dio de alta un carro');
+        DB::beginTransaction();
+        try{
+            $registro = new Carro();
+            $registro->fill($request->all());
+            $registro->save();
+    
+            $pro = new Propietario();
+            $pro->nombre = "Propietario para el carro " . $registro->Marca;
+            $pro->save();
+            DB::commit();
+            return redirect("/Carro")->with('ok','Se dio de alta un carro');
+        }catch(Exception $e){
+            DB::rollBack();
+            return redirect("/Carro")->with('ok','ERROR');
+
+        }
     }
 
     /**
