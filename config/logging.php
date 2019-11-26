@@ -89,6 +89,11 @@ return [
             'driver' => 'errorlog',
             'level' => 'debug',
         ],
+
+        'bitacora' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/sistema.log'),
+        ],
     ],
 
 ];

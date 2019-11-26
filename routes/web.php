@@ -42,3 +42,5 @@ Route::resource("Propietario",'PropietarioController')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/recuperar', 'CarroController@recuperar')->middleware('auth');

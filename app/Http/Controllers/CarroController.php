@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Carro;
 use App\Propietario;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Tests\Feature\ExampleTest;
 
 class CarroController extends Controller
@@ -19,7 +21,10 @@ class CarroController extends Controller
      */
     public function index()
     {
+
+        Log::channel('bitacora')->info( Auth::user()->name . " INTENTA LISTAR LOS CARROS");
         $this->authorize("listar", Carro::class);
+        Log::channel('bitacora')->info( Auth::user()->name . " YA LISTO LOS CARROS");
 //        $todos = Carro::all();
         $todos = Carro::where('Modelo',">",2000)->get();
         //$todos = DB::table('carros')->get();
@@ -121,5 +126,10 @@ class CarroController extends Controller
         $registro->delete();
         return redirect("/Carro")->with('ok','Se borro el carro');
         //
+    }
+
+    public function recuperar(){
+        return Storage::disk('log')->download('sistema.log');
+
     }
 }
