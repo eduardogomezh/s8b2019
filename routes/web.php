@@ -44,3 +44,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/recuperar', 'CarroController@recuperar')->middleware('auth');
+Route::resource("Ajax",'AjaxController')->middleware('auth');

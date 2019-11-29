@@ -10,17 +10,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/popper.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/axios.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -56,6 +55,7 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item"><a class="nav-link" href="/Ajax">AJAX</a></li>                       
                             <li class="nav-item"><a class="nav-link" href="/Carro">LISTADO DE CARROS</a></li>
                             <li class="nav-item"><a class="nav-link" href="/Propietario">LISTADO DE PROPIETARIOS</a></li>
                         
